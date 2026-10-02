@@ -13,7 +13,6 @@ import {
   FileText,
   Globe2,
   Mail,
-  MapPin,
   MessageSquareText,
 } from "lucide-react";
 import {
@@ -25,6 +24,7 @@ import {
   proofMetrics,
 } from "@/lib/landing-content";
 import styles from "./LandingPage.module.css";
+import { SiteFooter } from "./SiteFooter";
 
 const easing = [0.22, 1, 0.36, 1] as const;
 
@@ -272,25 +272,6 @@ function HowWeWorkSection() {
         </Reveal>
       </div>
     </section>
-  );
-}
-
-function SiteFooter() {
-  return (
-    <footer className={styles.footer}>
-      <div className={styles.footerInner}>
-        <div className={styles.footerSignoff}>Built in Belfast.<br />Made to work anywhere<BlueDot /></div>
-        <div className={styles.footerContact}>
-          <a href={links.email}><Mail aria-hidden="true" /><span>hello@briggsdigitalsolutions.com</span></a>
-          <div><MapPin aria-hidden="true" /><p>Belfast, Northern Ireland<span>Working across UK / Ireland</span></p></div>
-        </div>
-        <div className={styles.footerWordmark} aria-label="Briggs">BRIGGS<span className={styles.footerDot}>.</span></div>
-        <div className={styles.footerBottom}>
-          <span>© 2026 Briggs Digital Solutions. All rights reserved.</span>
-          <nav aria-label="Legal"><Link href={links.privacy}>Privacy</Link><i /><Link href={links.terms}>Terms</Link></nav>
-        </div>
-      </div>
-    </footer>
   );
 }
 
