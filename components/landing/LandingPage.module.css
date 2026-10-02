@@ -215,7 +215,7 @@
   .heroOverlay { background: linear-gradient(180deg,rgba(4,12,18,.91) 0%,rgba(4,12,18,.76) 43%,rgba(3,8,12,.25) 70%,rgba(2,6,9,.65) 100%); }
   .header { padding-top: 30px; }
   .logo { width: 185px; }
-  .menuButton { width: 34px; height: 28px; }
+  .menuButton { width: 46px; height: 40px; padding: 8px 6px; background: var(--dark-deep); border: 1px solid rgba(255,255,255,.16); }
   .heroContent { padding: 146px var(--page-gutter) 310px; }
   .heroEyebrow { font-size: 9px; letter-spacing: .18em; gap: 9px; white-space: nowrap; }
   .heroEyebrow i { flex: 1; width: auto; min-width: 30px; }
@@ -252,9 +252,10 @@
   .publicVisual .visualLabel { left: 14%; top: -55px; }
   .adminVisual { width: 96%; top: 390px; left: 8%; transform: rotate(1deg); }
   .adminVisual .visualLabel { left: 4%; top: -53px; }
-  .phoneVisual { width: 37%; right: 3%; bottom: 14px; }
+  .phoneVisual { width: 34%; right: 17%; bottom: 20px; }
   .phoneShell { border-width: 6px; border-radius: 24px; }
-  .phoneLabel { display: none; }
+  .phoneLabel { display: flex; left: -72px; top: -30px; right: auto; transform: none; white-space: nowrap; }
+  .phoneLabel::before { width: 34px; }
   .mobileProjectActions { display: block; grid-column: 1/-1; margin-top: 10px; }
   .mobileProjectActions .projectActions { display: grid; gap: 10px; }
   .mobileProjectActions .primaryButton { width: 100%; }
@@ -269,8 +270,9 @@
   .sectionInner, .buildSection .sectionInner { padding-top: 67px; padding-bottom: 70px; }
   .buildHeader .sectionIntro { font-size: 17px; line-height: 1.4; }
   .buildGrid { gap: 0; margin-top: 34px; }
-  .buildArea { border-left: 0; padding: 48px 0 60px; min-height: min(100svh, 820px); justify-content: flex-start; border-top: 1px solid var(--line-dark); }
+  .buildArea { border-left: 0; padding: 40px 0 52px; min-height: 0; justify-content: flex-start; border-top: 1px solid var(--line-dark); }
   .buildArea:first-child { padding-top: 0; border-top: 0; min-height: 0; }
+  .buildArea:last-child { padding-bottom: 18px; }
   .buildAreaMeta { font-size: 10px; }
   .buildArea h3 { font-size: clamp(36px,10vw,50px); line-height: .95; }
   .buildAreaTitleRow { margin-top: 20px; }
