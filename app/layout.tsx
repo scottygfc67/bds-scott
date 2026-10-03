@@ -5,6 +5,7 @@ import {
   DEFAULT_TITLE,
   SITE_NAME,
   SITE_URL,
+  SOCIAL_IMAGE,
 } from "@/lib/seo";
 import "./globals.css";
 
@@ -39,11 +40,13 @@ export const metadata: Metadata = {
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
     url: "/",
+    images: [SOCIAL_IMAGE],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
+    images: [SOCIAL_IMAGE.url],
   },
 };
 

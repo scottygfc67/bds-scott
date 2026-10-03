@@ -8,6 +8,13 @@ export const DEFAULT_TITLE = "Briggs Digital Solutions | Websites That Do More";
 export const DEFAULT_DESCRIPTION =
   "Design-led websites, management systems and digital tools built around how your business actually works. Based in Belfast, working across the UK and Ireland.";
 
+export const SOCIAL_IMAGE = {
+  url: "/og-image.png",
+  width: 1200,
+  height: 630,
+  alt: SITE_NAME,
+} as const;
+
 type PageMetadataOptions = {
   title: string;
   description: string;
@@ -37,11 +44,13 @@ export function createPageMetadata({
       title: socialTitle,
       description,
       url: canonicalUrl,
+      images: [SOCIAL_IMAGE],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: socialTitle,
       description,
+      images: [SOCIAL_IMAGE.url],
     },
   };
 }
