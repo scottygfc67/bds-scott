@@ -833,11 +833,11 @@ On mobile stack them.
 Use the original reference ranges:
 
 ```text
-Under £1,500
-£1,500 – £3,000
-£3,000 – £5,000
-£5,000 – £10,000
-£10,000+
+Under £500
+£500 – £1,000
+£1,000 – £1,500
+£1,500 – £2,500
+£2,500+
 Not sure yet
 ```
 
@@ -1540,11 +1540,11 @@ export const projectTypes = [
 ];
 
 export const budgetOptions = [
-  "Under £1,500",
-  "£1,500 – £3,000",
-  "£3,000 – £5,000",
-  "£5,000 – £10,000",
-  "£10,000+",
+  "Under £500",
+  "£500 – £1,000",
+  "£1,000 – £1,500",
+  "£1,500 – £2,500",
+  "£2,500+",
   "Not sure yet",
 ];
 
