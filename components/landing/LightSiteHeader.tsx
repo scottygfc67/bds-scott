@@ -17,12 +17,15 @@ export function LightSiteHeader({ active, compact = false }: { active?: "what-we
 
   useEffect(() => {
     if (!open) return;
-    const previous = document.body.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousRootOverflow = document.documentElement.style.overflow;
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
     const close = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", close);
     return () => {
-      document.body.style.overflow = previous;
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousRootOverflow;
       window.removeEventListener("keydown", close);
     };
   }, [open]);

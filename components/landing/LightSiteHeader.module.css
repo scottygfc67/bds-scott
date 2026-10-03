@@ -30,13 +30,15 @@
 }
 
 @media (max-width: 900px) {
-  .header { display: flex; justify-content: space-between; min-height: 102px; padding-top: 26px; padding-bottom: 26px; animation: none; }
+  .header { z-index: 1000; display: flex; justify-content: space-between; min-height: 102px; padding-top: 26px; padding-bottom: 26px; animation: none; transform: none !important; }
   .desktopNav, .headerCta { display: none; }
-  .menuButton { position: relative; z-index: 42; display: grid; place-items: center; width: 46px; height: 40px; border: 1px solid rgba(255,255,255,.16); background: var(--dark-deep); color: white; cursor: pointer; }
+  .logoLink, .menuButton { z-index: 1002; }
+  .menuButton { position: relative; display: grid; place-items: center; width: 46px; height: 40px; border: 1px solid rgba(255,255,255,.16); background: var(--dark-deep); color: white; cursor: pointer; }
   .menuButton svg { width: 27px; }
-  .mobileMenu { position: fixed; z-index: 41; inset: 0; display: block; padding: 145px var(--page-gutter) 50px; background: var(--dark-deep); color: white; opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility .25s ease; }
-  .mobileMenuOpen { opacity: 1; visibility: visible; }
-  .mobileMenu nav { display: grid; }
+  .mobileMenu { position: fixed; z-index: 1001; inset: 0; display: flex; width: 100vw; height: 100dvh; align-items: center; overflow-y: auto; padding: 112px var(--page-gutter) 48px; background: #0b0d0e; color: white; visibility: hidden; pointer-events: none; transition: visibility 0s linear .22s; }
+  .mobileMenuOpen { visibility: visible; pointer-events: auto; transition-delay: 0s; }
+  .mobileMenu nav { display: grid; width: 100%; opacity: 0; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease; }
+  .mobileMenuOpen nav { opacity: 1; transform: none; }
   .mobileMenu a { display: grid; grid-template-columns: 40px 1fr auto; align-items: center; border-bottom: 1px solid var(--line-dark); padding: 22px 0; font-family: var(--font-display); font-size: clamp(30px,7vw,49px); font-weight: 800; text-transform: uppercase; }
   .mobileMenu a > span { color: var(--blue); font-family: var(--font-body); font-size: 10px; letter-spacing: .2em; }
   .mobileMenu a[aria-current="page"] { color: #aebaff; }
@@ -50,4 +52,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .header { animation: none; }
+  .mobileMenu, .mobileMenu nav { transition: none; }
 }
