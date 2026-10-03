@@ -94,6 +94,7 @@
 .phoneShell img { width: 100%; height: auto; display: block; }
 .phoneLabel { left: calc(100% + 16px); top: 65%; transform: none; }
 .phoneLabel::before { width: 45px; height: 1px; transform: none; }
+.phoneLabelBreak { display: none; }
 .mobileProjectActions { display: none; }
 .featureStrip { grid-column: 1/-1; display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); border-top: 1px solid var(--line-light); margin-top: 10px; padding-top: 24px; }
 .featureItem { display: flex; align-items: center; gap: 17px; min-width: 0; padding: 0 24px; border-left: 1px solid var(--line-light); }
@@ -259,9 +260,10 @@
   .adminVisual .visualLabel { left: 4%; top: -53px; }
   .phoneVisual { width: 34%; right: 17%; bottom: 20px; }
   .phoneShell { border-width: 6px; border-radius: 24px; }
-  .phoneLabel { display: flex; left: -160px; top: 68%; right: auto; flex-direction: row-reverse; gap: 10px; transform: none; white-space: nowrap; }
-  .phoneLabel::before { width: 62px; margin-right: 0; }
+  .phoneLabel { display: flex; left: -172px; top: 68%; right: auto; flex-direction: row-reverse; gap: 10px; transform: none; white-space: nowrap; line-height: 1.45; }
+  .phoneLabel::before { width: 72px; margin-right: 0; }
   .phoneLabel::after { content: ""; position: absolute; right: -2px; top: 50%; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); transform: translateY(-50%); }
+  .phoneLabelBreak { display: block; }
   .mobileProjectActions { display: block; grid-column: 1/-1; margin-top: 10px; }
   .mobileProjectActions .projectActions { display: grid; gap: 10px; }
   .mobileProjectActions .primaryButton { width: 100%; }

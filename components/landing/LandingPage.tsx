@@ -204,7 +204,7 @@ function SelectedWorkSection() {
           <Reveal className={styles.adminVisual} delay={0.16}><span className={styles.visualLabel}>02 / Artist CMS</span><DesktopDevice src="/dbm_desktop_admin.png" alt="David Browne Murray artist management dashboard" /></Reveal>
           <Reveal className={styles.phoneVisual} delay={0.22}>
             <div className={styles.phoneShell}><Image src="/dbm_mobile_mockup.png" alt="David Browne Murray musician website shown on mobile" width={863} height={1822} sizes="(max-width: 767px) 42vw, 15vw" /></div>
-            <span className={`${styles.visualLabel} ${styles.phoneLabel}`}>Responsive / Mobile</span>
+            <span className={`${styles.visualLabel} ${styles.phoneLabel}`}>Responsive /<br className={styles.phoneLabelBreak} /> Mobile</span>
           </Reveal>
         </div>
         <div className={styles.mobileProjectActions}><ProjectActions /></div>
