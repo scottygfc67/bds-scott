@@ -86,8 +86,16 @@ function LandingHeader() {
 
   return (
     <motion.header className={styles.header} initial={false} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease: easing }}>
-      <Link href="#top" aria-label="Briggs Digital Solutions — home" className={styles.logoLink}>
-        <Image src="/bdslogo.png" alt="Briggs Digital Solutions" width={740} height={181} className={styles.logo} />
+      <Link href="/" aria-label="Briggs Digital Solutions — home" className={styles.logoLink}>
+        <Image
+          src="/bdslogo.png"
+          alt="Briggs Digital Solutions"
+          width={740}
+          height={181}
+          sizes="(max-width: 420px) 168px, (max-width: 767px) 185px, 255px"
+          className={styles.logo}
+          priority
+        />
       </Link>
       <nav aria-label="Primary" className={styles.desktopNav}>
         {navItems.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
@@ -114,7 +122,7 @@ function HeroSection() {
   return (
     <section id="top" className={styles.hero}>
       <motion.div className={styles.heroMedia} initial={false} animate={{ scale: 1 }} transition={{ duration: 1.1, ease: easing }}>
-        <Image src="/hero.png" alt="" fill priority sizes="100vw" className={styles.heroImage} />
+        <Image src="/hero.png" alt="Belfast skyline at dusk with the Harland and Wolff cranes" fill priority sizes="100vw" className={styles.heroImage} />
       </motion.div>
       <div className={styles.heroOverlay} aria-hidden="true" />
       <LandingHeader />
@@ -122,7 +130,7 @@ function HeroSection() {
         <motion.div className={styles.heroEyebrow} initial={false} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.15 }}>
           Belfast based <span>/</span> Working worldwide <i aria-hidden="true" />
         </motion.div>
-        <h1 className={styles.heroTitle}>
+        <h1 className={styles.heroTitle} aria-label="We build websites that do more.">
           {lines.map((line, i) => (
             <span className={styles.heroLineClip} key={line}>
               <motion.span initial={false} animate={{ y: 0 }} transition={{ duration: 0.65, delay: 0.22 + i * 0.09, ease: easing }}>
@@ -177,8 +185,9 @@ function FeatureIcon({ name }: { name: string }) {
 function ProjectActions() {
   return (
     <div className={styles.projectActions}>
-      <PrimaryLink href={links.dbmCaseStudy}>View Project</PrimaryLink>
-      <a href={links.dbmWebsite} target="_blank" rel="noreferrer" className={styles.projectTextLink}>Visit Website <ArrowRight aria-hidden="true" /></a>
+      <a href={links.dbmWebsite} target="_blank" rel="noopener noreferrer" className={styles.primaryButton}>
+        <span>View Project</span><ArrowUpRight aria-hidden="true" />
+      </a>
     </div>
   );
 }

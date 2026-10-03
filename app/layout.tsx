@@ -1,13 +1,50 @@
 import type { Metadata } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_TITLE,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/seo";
 import "./globals.css";
 
 const inter = Inter({ variable: "--font-body", subsets: ["latin"], display: "swap" });
 const interTight = Inter_Tight({ variable: "--font-display", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Briggs Digital Solutions | Websites That Do More",
-  description: "Belfast-based web design and development for businesses that need more than a template — custom websites, management systems, integrations and digital tools.",
+  metadataBase: SITE_URL,
+  title: {
+    default: DEFAULT_TITLE,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    siteName: SITE_NAME,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    url: "/",
+  },
+  twitter: {
+    card: "summary",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

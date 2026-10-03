@@ -63,8 +63,10 @@
 .sectionLabel { color: #4f5157; white-space: nowrap; }
 .labelSquare { width: 7px; height: 7px; background: var(--blue); }
 .labelNumber { color: var(--blue); }
+.sectionLabel:not(.sectionLabelInverse) .labelNumber { color: #3150f5; }
 .labelRule { display: block; width: clamp(80px,12vw,180px); height: 1px; margin-left: 6px; background: var(--line-light); }
 .sectionLabelInverse { color: #d4d4d1; }
+.sectionLabelInverse .labelNumber { color: #6580ff; }
 .sectionLabelInverse .labelRule { background: var(--line-dark); }
 .workCopy .sectionTitle { font-size: clamp(68px,5.8vw,98px); margin-top: 30px; }
 .sectionIntro { margin: 0; max-width: 590px; color: var(--text-muted-light); font-size: clamp(18px,1.45vw,25px); line-height: 1.28; letter-spacing: -.025em; }
@@ -101,7 +103,7 @@
 .featureItem:first-child { border-left: 0; padding-left: 0; }
 .featureItem strong, .featureItem span { display: block; text-transform: uppercase; white-space: nowrap; }
 .featureItem strong { font-size: 11px; letter-spacing: .1em; margin-bottom: 5px; }
-.featureItem span { font-size: 9px; letter-spacing: .16em; color: #74767a; }
+.featureItem span { font-size: 9px; letter-spacing: .16em; color: var(--text-muted-light); }
 
 .buildSection { background: var(--dark); color: var(--text-on-dark); }
 .sectionInner { padding-top: clamp(70px,6vw,104px); padding-bottom: clamp(58px,5vw,90px); }

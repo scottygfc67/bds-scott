@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalContact, LegalPage, LegalSection } from "@/components/legal/LegalPage";
+import { createPageMetadata } from "@/lib/seo";
 import { CONTACT_EMAIL, CONTACT_EMAIL_HREF } from "@/lib/site";
 import styles from "@/components/legal/LegalPage.module.css";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | Briggs Digital Solutions",
+export const metadata: Metadata = createPageMetadata({
+  title: "Privacy Policy",
   description: "Privacy information for visitors and project enquiries submitted through Briggs Digital Solutions.",
-};
+  path: "/privacy",
+});
 
 const contents = [
   { id: "who-we-are", label: "Who we are" },
@@ -124,7 +126,7 @@ export default function PrivacyPage() {
 
       <LegalSection number="11" id="complaints" title="Complaints">
         <p>If you are concerned about how Briggs has handled your information, please contact <a href={CONTACT_EMAIL_HREF}>{CONTACT_EMAIL}</a> first so the concern can be investigated.</p>
-        <p>You also have the right to complain to the UK Information Commissioner’s Office. Current guidance and the complaint route are available on the <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noreferrer">ICO website</a>.</p>
+        <p>You also have the right to complain to the UK Information Commissioner’s Office. Current guidance and the complaint route are available on the <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener noreferrer">ICO website</a>.</p>
       </LegalSection>
 
       <LegalSection number="12" id="cookies" title="Cookies, storage and analytics">

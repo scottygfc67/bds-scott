@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalContact, LegalPage, LegalSection } from "@/components/legal/LegalPage";
+import { createPageMetadata } from "@/lib/seo";
 import { CONTACT_EMAIL, CONTACT_EMAIL_HREF } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Website Terms | Briggs Digital Solutions",
+export const metadata: Metadata = createPageMetadata({
+  title: "Website Terms",
   description: "Terms governing use of the Briggs Digital Solutions website.",
-};
+  path: "/terms",
+});
 
 const contents = [
   { id: "about-terms", label: "About these terms" },

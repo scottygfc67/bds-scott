@@ -27,9 +27,9 @@
 .intro > p { max-width: 420px; margin: 0; color: #56585b; font-size: clamp(16px, 1.2vw, 19px); line-height: 1.55; }
 .location { display: flex; align-items: flex-start; gap: 18px; margin-top: clamp(36px, 4vw, 62px); font-size: 11px; font-weight: 700; letter-spacing: .17em; line-height: 1.45; }
 .location svg { width: 19px; height: 19px; color: var(--blue); stroke-width: 1.7; }
-.location small { display: block; margin-top: 6px; color: #77797c; font-size: 9px; letter-spacing: .15em; }
+.location small { display: block; margin-top: 6px; color: var(--text-muted-light); font-size: 9px; letter-spacing: .15em; }
 .preferEmail { max-width: 430px; margin-top: 35px; padding-top: 24px; border-top: 1px solid var(--line-light); font-size: 12px; }
-.preferEmail > span { display: block; margin-bottom: 12px; color: #77797c; }
+.preferEmail > span { display: block; margin-bottom: 12px; color: var(--text-muted-light); }
 .preferEmail a { display: flex; align-items: center; gap: 11px; font-weight: 650; overflow-wrap: anywhere; }
 .preferEmail svg { width: 17px; color: var(--blue); }
 
@@ -100,7 +100,7 @@
 .nextGrid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); border-top: 1px solid var(--line-light); }
 .nextGrid article { min-width: 0; padding: 28px clamp(18px,2vw,34px) 10px; border-left: 1px solid var(--line-light); }
 .nextGrid article:first-child { border-left: 0; padding-left: 0; }
-.nextGrid article > span { color: var(--blue); font-size: 11px; font-weight: 700; letter-spacing: .16em; }
+.nextGrid article > span { color: #3150f5; font-size: 11px; font-weight: 700; letter-spacing: .16em; }
 .nextGrid article > i { display: block; width: 38px; height: 1px; margin: 20px 0 42px; background: var(--ink); }
 .nextGrid h3 { min-height: 48px; margin: 0 0 18px; font-family: var(--font-display); font-size: clamp(21px,1.7vw,29px); line-height: 1; }
 .nextGrid p { margin: 0; color: #616366; font-size: 14px; line-height: 1.55; }

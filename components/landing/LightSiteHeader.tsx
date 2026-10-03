@@ -35,7 +35,15 @@ export function LightSiteHeader({ active, compact = false }: { active?: "what-we
   return (
     <header className={`${styles.header} ${compact ? styles.compact : ""} ${open ? styles.headerOpen : ""}`}>
       <Link href="/" aria-label="Briggs Digital Solutions — home" className={styles.logoLink}>
-        <Image src="/bdslogo.png" alt="Briggs Digital Solutions" width={740} height={181} className={styles.logo} priority />
+        <Image
+          src="/bdslogo.png"
+          alt="Briggs Digital Solutions"
+          width={740}
+          height={181}
+          sizes="(max-width: 767px) 168px, 255px"
+          className={styles.logo}
+          priority
+        />
       </Link>
       <nav className={styles.desktopNav} aria-label="Primary">
         {navItems.map((item) => <Link href={item.href} key={item.href} aria-current={active === item.key ? "page" : undefined}>{item.label}</Link>)}

@@ -5,7 +5,6 @@ export const links = {
   work: "#work",
   whatWeBuild: "/what-we-build",
   howWeWork: "#how-we-work",
-  dbmCaseStudy: "/work/david-browne-murray",
   dbmWebsite: "https://dbm-website-ebon.vercel.app/",
   email: CONTACT_EMAIL_HREF,
   privacy: "/privacy",
