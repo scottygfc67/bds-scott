@@ -383,13 +383,13 @@ Copy:
 
 ```text
 Prefer email?
-hello@briggsdigitalsolutions.com
+info@briggsdigitalsolutions.com
 ```
 
 Make the email clickable:
 
 ```text
-mailto:hello@briggsdigitalsolutions.com
+mailto:info@briggsdigitalsolutions.com
 ```
 
 Use the same outline mail icon style already used elsewhere.
@@ -956,7 +956,7 @@ If no transport credentials exist, do **not** pretend the enquiry was delivered.
 Return a clear server error and show:
 
 ```text
-Something went wrong sending your project details. Please email hello@briggsdigitalsolutions.com instead.
+Something went wrong sending your project details. Please email info@briggsdigitalsolutions.com instead.
 ```
 
 Do not silently drop enquiries.
@@ -983,7 +983,7 @@ Secondary:
 
 ```text
 Need to add something?
-hello@briggsdigitalsolutions.com
+info@briggsdigitalsolutions.com
 ```
 
 Optional button:
@@ -1279,7 +1279,7 @@ or reuse the compact footer language already approved on the homepage.
 Include:
 
 ```text
-hello@briggsdigitalsolutions.com
+info@briggsdigitalsolutions.com
 Belfast, Northern Ireland
 Working across UK / Ireland
 Privacy
@@ -1613,7 +1613,7 @@ Submission error panel:
 
 ```text
 We couldn’t send your project details just now.
-Please try again or email hello@briggsdigitalsolutions.com.
+Please try again or email info@briggsdigitalsolutions.com.
 ```
 
 Do not use browser alerts.

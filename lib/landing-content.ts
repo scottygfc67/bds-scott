@@ -1,11 +1,13 @@
+import { CONTACT_EMAIL_HREF } from "@/lib/site";
+
 export const links = {
   startProject: "/start-a-project",
   work: "#work",
-  whatWeBuild: "#what-we-build",
+  whatWeBuild: "/what-we-build",
   howWeWork: "#how-we-work",
   dbmCaseStudy: "/work/david-browne-murray",
   dbmWebsite: "https://dbm-website-ebon.vercel.app/",
-  email: "mailto:hello@briggsdigitalsolutions.com",
+  email: CONTACT_EMAIL_HREF,
   privacy: "/privacy",
   terms: "/terms",
 } as const;

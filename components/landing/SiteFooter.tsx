@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail, MapPin } from "lucide-react";
 import { links } from "@/lib/landing-content";
+import { CONTACT_EMAIL } from "@/lib/site";
 import styles from "./LandingPage.module.css";
 
 export function SiteFooter() {
@@ -9,7 +10,7 @@ export function SiteFooter() {
       <div className={styles.footerInner}>
         <div className={styles.footerSignoff}>Built in Belfast.<br />Made to work anywhere<span className={styles.blueDot} aria-hidden="true">.</span></div>
         <div className={styles.footerContact}>
-          <a href={links.email}><Mail aria-hidden="true" /><span>hello@briggsdigitalsolutions.com</span></a>
+          <a href={links.email}><Mail aria-hidden="true" /><span>{CONTACT_EMAIL}</span></a>
           <div><MapPin aria-hidden="true" /><p>Belfast, Northern Ireland<span>Working across UK / Ireland</span></p></div>
         </div>
         <div className={styles.footerWordmark} aria-label="Briggs">BRIGGS<span className={styles.footerDot}>.</span></div>

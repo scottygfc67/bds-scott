@@ -1,12 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, KeyboardEvent, useRef, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
-  ArrowUpRight,
   Box,
   Check,
   CircleHelp,
@@ -14,13 +12,13 @@ import {
   Database,
   Mail,
   MapPin,
-  Menu,
   Monitor,
   PanelsTopLeft,
   Shapes,
   X,
   Zap,
 } from "lucide-react";
+import { LightSiteHeader } from "@/components/landing/LightSiteHeader";
 import {
   budgetOptions,
   emptyProjectEnquiry,
@@ -28,16 +26,11 @@ import {
   ProjectEnquiry,
   timelineOptions,
 } from "@/lib/project-enquiry";
+import { CONTACT_EMAIL, CONTACT_EMAIL_HREF } from "@/lib/site";
 import styles from "./StartProjectPage.module.css";
 
 type Step = 1 | 2 | 3;
 type FieldErrors = Partial<Record<keyof ProjectEnquiry, string>>;
-
-const navItems = [
-  { label: "Work", href: "/#work" },
-  { label: "What We Build", href: "/#what-we-build" },
-  { label: "How We Work", href: "/#how-we-work" },
-] as const;
 
 const typeIcons = [Monitor, PanelsTopLeft, Database, CreditCard, Zap, Shapes, CircleHelp];
 
@@ -60,46 +53,6 @@ function BlueDot() {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return <div className={styles.sectionLabel}><i aria-hidden="true" /><span>{children}</span><b aria-hidden="true" /></div>;
-}
-
-function StartHeader() {
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    if (!open) return;
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const close = (event: globalThis.KeyboardEvent) => event.key === "Escape" && setOpen(false);
-    window.addEventListener("keydown", close);
-    return () => {
-      document.body.style.overflow = previous;
-      window.removeEventListener("keydown", close);
-    };
-  }, [open]);
-
-  return (
-    <header className={`${styles.header} ${open ? styles.headerOpen : ""}`}>
-      <Link href="/" aria-label="Briggs Digital Solutions — home" className={styles.logoLink}>
-        <Image src="/bdslogo.png" alt="Briggs Digital Solutions" width={740} height={181} className={styles.logo} priority />
-      </Link>
-      <nav className={styles.desktopNav} aria-label="Primary">
-        {navItems.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
-      </nav>
-      <a href="#project-form" className={styles.headerCta} aria-current="page"><span>Start a Project</span><ArrowUpRight aria-hidden="true" /></a>
-      <button type="button" className={styles.menuButton} aria-expanded={open} aria-controls="start-mobile-menu" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen((value) => !value)}>
-        {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
-      </button>
-      <div id="start-mobile-menu" className={`${styles.mobileMenu} ${open ? styles.mobileMenuOpen : ""}`} aria-hidden={!open}>
-        <nav aria-label="Mobile primary">
-          {[...navItems, { label: "Start a Project", href: "#project-form" }].map((item, index) => (
-            <Link href={item.href} key={item.href} tabIndex={open ? 0 : -1} onClick={() => setOpen(false)}>
-              <span>0{index + 1}</span>{item.label}<ArrowRight aria-hidden="true" />
-            </Link>
-          ))}
-        </nav>
-      </div>
-    </header>
-  );
 }
 
 function TextField({ id, label, required, value, placeholder, type = "text", error, onChange }: {
@@ -215,7 +168,7 @@ function ProjectForm() {
         <span className={styles.successIcon}><Check aria-hidden="true" /></span>
         <h2>PROJECT RECEIVED<BlueDot /></h2>
         <p>Thanks — your project details are through. We’ll review what you’ve sent and get back to you directly.</p>
-        <div className={styles.successEmail}>Need to add something?<a href="mailto:hello@briggsdigitalsolutions.com">hello@briggsdigitalsolutions.com</a></div>
+        <div className={styles.successEmail}>Need to add something?<a href={CONTACT_EMAIL_HREF}>{CONTACT_EMAIL}</a></div>
         <Link href="/" className={styles.primaryButton}>Back to Briggs <ArrowRight aria-hidden="true" /></Link>
       </div>
     );
@@ -259,7 +212,7 @@ function ProjectForm() {
               <ChoiceGroup name="budget" legend="What level of investment are you considering?" options={budgetOptions} selected={data.budget} onSelect={(value) => update("budget", value)} />
               <ChoiceGroup name="timeline" legend="When would you ideally like to get started?" options={timelineOptions} selected={data.timeline} onSelect={(value) => update("timeline", value)} />
             </div>
-            {status === "error" && <div className={styles.submitError} role="alert">Something went wrong sending your project details. Please email <a href="mailto:hello@briggsdigitalsolutions.com">hello@briggsdigitalsolutions.com</a> instead.</div>}
+            {status === "error" && <div className={styles.submitError} role="alert">Something went wrong sending your project details. Please try again or email <a href={CONTACT_EMAIL_HREF}>{CONTACT_EMAIL}</a>.</div>}
             <div className={styles.formActions}><button type="button" className={styles.backButton} onClick={() => moveTo(2)}><ArrowLeft aria-hidden="true" /> Back</button><button type="submit" className={styles.primaryButton} disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send Project Details"} <ArrowRight aria-hidden="true" /></button></div>
           </>}
         </div>
@@ -278,7 +231,7 @@ function ProjectIntro() {
     <h1><span>TELL US</span><span>WHAT</span><span>YOU’RE</span><span>BUILDING<BlueDot /></span></h1>
     <p>You don’t need a technical brief. Tell us what you’re trying to achieve and we’ll work out the right solution for your business.</p>
     <div className={styles.location}><MapPin aria-hidden="true" /><span>BASED IN BELFAST<small>WORKING ACROSS UK / IRELAND</small></span></div>
-    <div className={styles.preferEmail}><span>Prefer email?</span><a href="mailto:hello@briggsdigitalsolutions.com"><Mail aria-hidden="true" />hello@briggsdigitalsolutions.com</a></div>
+    <div className={styles.preferEmail}><span>Prefer email?</span><a href={CONTACT_EMAIL_HREF}><Mail aria-hidden="true" />{CONTACT_EMAIL}</a></div>
   </aside>;
 }
 
@@ -305,7 +258,7 @@ function ProjectFaq() {
 
 export function StartProjectPage() {
   return <div className={styles.page}>
-    <StartHeader />
+    <LightSiteHeader active="start-a-project" />
     <main>
       <section id="project-form" className={styles.projectSection}><div className={styles.projectShell}><ProjectIntro /><ProjectForm /></div></section>
       <WhatHappensNext />

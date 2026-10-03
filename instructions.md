@@ -1797,7 +1797,7 @@ GET IN TOUCH
 `GET IN TOUCH`:
 
 ```text
-mailto:hello@briggsdigitalsolutions.com
+mailto:info@briggsdigitalsolutions.com
 ```
 
 The process section is the final conversion section.
@@ -1961,7 +1961,7 @@ Blue dot after `ANYWHERE.`
 Email:
 
 ```text
-hello@briggsdigitalsolutions.com
+info@briggsdigitalsolutions.com
 ```
 
 Location:

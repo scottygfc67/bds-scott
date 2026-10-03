@@ -1,0 +1,31 @@
+.loader {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--dark-deep);
+  pointer-events: none;
+  animation: loaderEnter 120ms ease-out both;
+}
+
+.mark {
+  width: clamp(42px,4vw,54px);
+  aspect-ratio: 1;
+  background: url('/favicon.ico') center / contain no-repeat;
+  animation: markPulse 850ms ease-in-out infinite alternate;
+}
+
+@keyframes loaderEnter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes markPulse {
+  from { opacity: .72; transform: scale(.97); }
+  to { opacity: 1; transform: scale(1.025); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader, .mark { animation: none; }
+}
