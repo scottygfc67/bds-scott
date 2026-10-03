@@ -1,5 +1,9 @@
 .canvas { background: transparent; }
 
+@media (max-width: 900px) {
+  .canvas { background: var(--paper-bright); }
+}
+
 @media (min-width: 1200px) {
   .canvas { background: var(--paper-bright); }
 }

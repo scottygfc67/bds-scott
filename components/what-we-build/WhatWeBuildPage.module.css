@@ -157,11 +157,11 @@
   .heroCopy > p, .sectionCopy > p { font-size: 16px; line-height: 1.48; }
   .primaryButton { width: 100%; min-height: 58px; }
   .stackArea { display: block; }
-  .stackVisual { min-height: 440px; }
-  .stackLayer { width: 78%; }
+  .stackVisual { min-height: clamp(360px,92vw,396px); margin-bottom: 28px; }
+  .stackLayer { width: 74%; }
   .websiteLayer { top: 1%; left: 2%; transform: perspective(1000px) rotateX(52deg) rotateZ(4deg) translateZ(30px); }
-  .cmsLayer { top: 31%; left: 10%; transform: perspective(1000px) rotateX(52deg) rotateZ(3deg) translateZ(15px); }
-  .automationLayer { top: 61%; left: 18%; transform: perspective(1000px) rotateX(52deg) rotateZ(2deg); }
+  .cmsLayer { top: 27%; left: 10%; transform: perspective(1000px) rotateX(52deg) rotateZ(3deg) translateZ(15px); }
+  .automationLayer { top: 53%; left: 18%; transform: perspective(1000px) rotateX(52deg) rotateZ(2deg); }
   .stackLabels { gap: 0; padding: 0; border-top: 1px solid var(--line-light); }
   .stackLabel { min-height: 76px; grid-template-columns: 1fr auto; }
   .stackLabel > i { display: none; }
