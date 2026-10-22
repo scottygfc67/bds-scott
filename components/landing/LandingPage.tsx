@@ -198,7 +198,7 @@ function SelectedWorkSection() {
       <div className={styles.selectedInner}>
         <div className={styles.workCopy}>
           <Reveal><SectionLabel number="02">Selected Work</SectionLabel></Reveal>
-          <Reveal delay={0.04}><h2 className={styles.sectionTitle}>Designed<br />By<br />Us<BlueDot /></h2></Reveal>
+          <Reveal delay={0.04}><h2 className={styles.sectionTitle}>Designed<br />By Us<BlueDot /></h2></Reveal>
           <Reveal delay={0.08}><p className={styles.sectionIntro}>Good design gets attention. The right technology turns that attention into something useful.</p></Reveal>
           <Reveal className={styles.projectCopy} delay={0.1}>
             <div className={styles.projectMeta}><span>01</span><i /><span>2026</span></div>
