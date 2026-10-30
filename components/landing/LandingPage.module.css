@@ -450,3 +450,50 @@
   .timelineLine { top: 118px; }
   .timelineStep .timelineNode { margin-top: 0; margin-bottom: 19px; }
 }
+
+/* Milestone-anchored progress: the orb sits exactly on the node centres. */
+@media (max-width: 1199px) {
+  .timelineProgress {
+    bottom: auto;
+    transform: none !important;
+    transition: none;
+  }
+  .timelineTravelDot {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    left: 11px;
+    z-index: 5;
+    border: 2px solid var(--blue);
+    transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .timelineCheck {
+    width: 15px;
+    height: 15px;
+    color: #fff;
+    opacity: 0;
+    transform: rotate(-150deg) scale(.25);
+  }
+  .timelineTravelDotComplete {
+    background: #16a34a;
+    border-color: #16a34a;
+    box-shadow: 0 0 0 7px rgba(22,163,74,.14);
+    animation: timelineFinish .6s cubic-bezier(.22,1,.36,1) both;
+  }
+  .timelineTravelDotComplete .timelineCheck {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+    transition: opacity .18s ease .15s, transform .55s cubic-bezier(.22,1,.36,1);
+  }
+  @keyframes timelineFinish {
+    0% { rotate: 0deg; scale: 1; }
+    50% { rotate: 200deg; scale: 1.26; }
+    100% { rotate: 360deg; scale: 1; }
+  }
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 1199px) {
+  .timelineProgress { transform: none !important; }
+  .timelineTravelDotComplete { animation: none; }
+  .timelineTravelDotComplete .timelineCheck { transition: none; }
+}
