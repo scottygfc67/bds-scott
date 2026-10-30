@@ -356,3 +356,49 @@
   .timelineLine { transform: none !important; }
   .mobileMenu, .mobileMenu nav { transition: none; }
 }
+
+/* Scroll-linked process journey: desktop remains horizontal; mobile follows the reader. */
+.timelineProgress, .timelineTravelDot { display: none; }
+@media (max-width: 900px) {
+  .timelineLine {
+    left: 10px;
+    top: 10px;
+    bottom: 12px;
+    width: 2px;
+    height: auto;
+    right: auto;
+    background: rgba(65,96,253,.18);
+    transform: none !important;
+  }
+  .timelineProgress {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 10px;
+    top: 10px;
+    bottom: 12px;
+    width: 2px;
+    background: var(--blue);
+    transform-origin: top;
+    pointer-events: none;
+  }
+  .timelineTravelDot {
+    display: block;
+    position: absolute;
+    z-index: 3;
+    left: 11px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--blue);
+    box-shadow: 0 0 0 6px rgba(65,96,253,.13);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .timelineStep { z-index: 2; }
+  .timelineNode { background: var(--paper-bright); }
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 900px) {
+  .timelineProgress { transform: scaleY(1) !important; }
+  .timelineTravelDot { display: none; }
+}
