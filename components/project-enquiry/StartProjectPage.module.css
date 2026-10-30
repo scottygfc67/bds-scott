@@ -196,3 +196,34 @@
 @media (prefers-reduced-motion: reduce) {
   .header, .intro, .formPanel, .stepPane { animation: none; }
 }
+
+/* Compact five-stage summary: shared copy with the homepage and How We Work page. */
+.nextGrid { grid-template-columns: 1fr; }
+.nextGrid article, .nextGrid article:first-child {
+  display: grid;
+  grid-template-columns: 38px minmax(135px, .8fr) minmax(0, 1.7fr);
+  align-items: start;
+  column-gap: clamp(12px, 1.5vw, 24px);
+  padding: 21px 0;
+  border-left: 0;
+  border-bottom: 1px solid var(--line-light);
+}
+.nextGrid article:last-child { border-bottom: 0; }
+.nextGrid article > span { padding-top: 4px; }
+.nextGrid article > i { display: none; }
+.nextGrid h3 {
+  min-height: 0;
+  margin: 0;
+  font-size: clamp(20px, 1.65vw, 28px);
+  line-height: 1.05;
+}
+.nextGrid p { font-size: 14px; line-height: 1.45; }
+@media (max-width: 767px) {
+  .nextGrid article, .nextGrid article:first-child {
+    grid-template-columns: 32px minmax(0,1fr);
+    gap: 8px 14px;
+    padding: 22px 0;
+  }
+  .nextGrid h3 { font-size: 25px; }
+  .nextGrid p { grid-column: 2; font-size: 15px; }
+}
