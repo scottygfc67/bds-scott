@@ -254,7 +254,13 @@ function WhatWeBuildSection() {
   );
 }
 
-function HowWeWorkSection() {
+export function HowWeWorkSection() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 65%", "end 45%"],
+  });
+  const dotPosition = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   return (
     <section id="how-we-work" className={styles.processSection}>
       <div className={styles.sectionInner}>
