@@ -3,13 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion } from "motion/react";
 import {
   ArrowDown,
   ArrowRight,
   ArrowUpRight,
   BarChart3,
   CalendarDays,
+  Check,
   FileText,
   Globe2,
   Mail,
@@ -256,11 +257,55 @@ function WhatWeBuildSection() {
 
 export function HowWeWorkSection() {
   const timelineRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: timelineRef,
-    offset: ["start 65%", "end 45%"],
-  });
-  const dotPosition = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const nodeRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const [journey, setJourney] = useState({ start: 0, end: 0, current: 0, complete: false });
+
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const root = timelineRef.current;
+      const first = nodeRefs.current[0];
+      const last = nodeRefs.current[processSteps.length - 1];
+      if (!root || !first || !last) return;
+      const rootTop = root.getBoundingClientRect().top;
+      const firstRect = first.getBoundingClientRect();
+      const lastRect = last.getBoundingClientRect();
+      const start = firstRect.top + firstRect.height / 2 - rootTop;
+      const end = lastRect.top + lastRect.height / 2 - rootTop;
+      // Travel only after the first circle crosses the viewport reading line,
+      // and end precisely when the launch circle reaches that same line.
+      const readingLine = window.innerHeight * 0.62;
+      const distance = lastRect.top + lastRect.height / 2 - (firstRect.top + firstRect.height / 2);
+      const progress = distance > 0
+        ? Math.max(0, Math.min(1, (readingLine - (firstRect.top + firstRect.height / 2)) / distance))
+        : 0;
+      const current = start + (end - start) * progress;
+      setJourney(previous =>
+        Math.abs(previous.current - current) < 0.5 &&
+        Math.abs(previous.start - start) < 0.5 &&
+        Math.abs(previous.end - end) < 0.5 &&
+        previous.complete === (progress >= 1)
+          ? previous
+          : { start, end, current, complete: progress >= 1 }
+      );
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    const observer = new ResizeObserver(schedule);
+    if (timelineRef.current) observer.observe(timelineRef.current);
+    nodeRefs.current.forEach(node => { if (node) observer.observe(node); });
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    schedule();
+    return () => {
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      observer.disconnect();
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
   return (
     <section id="how-we-work" className={styles.processSection}>
       <div className={styles.sectionInner}>
@@ -271,12 +316,14 @@ export function HowWeWorkSection() {
           <div className={styles.processMicrocopy}>Discovery first.<br />Built together.<br />14-day target.</div>
         </div>
         <div className={styles.timeline} ref={timelineRef}>
-          <div className={styles.timelineLine} aria-hidden="true" /><motion.div className={styles.timelineProgress} style={{ scaleY: scrollYProgress }} aria-hidden="true" /><motion.span className={styles.timelineTravelDot} style={{ top: dotPosition }} aria-hidden="true" />
+          <div className={styles.timelineLine} aria-hidden="true" />
+          <div className={styles.timelineProgress} style={{ top: journey.start, height: Math.max(0, journey.current - journey.start) }} aria-hidden="true" />
+          <span className={`${styles.timelineTravelDot} ${journey.complete ? styles.timelineTravelDotComplete : ""}`} style={{ top: journey.current }} aria-hidden="true"><Check className={styles.timelineCheck} strokeWidth={3} /></span>
           {processSteps.map((step, index) => (
             <Reveal className={styles.timelineStep} key={step.number} delay={index * 0.07} amount={0.2}>
               <header><strong>{step.number}</strong><i /><span>{step.label}</span></header>
               <h3>{step.title}</h3>
-              <span className={`${styles.timelineNode} ${index === processSteps.length - 1 ? styles.timelineNodeFinal : ""}`} aria-hidden="true" />
+              <span ref={node => { nodeRefs.current[index] = node; }} className={`${styles.timelineNode} ${index === processSteps.length - 1 ? styles.timelineNodeFinal : ""}`} aria-hidden="true" />
               <p>{step.body}</p>
               <ul>{step.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
             </Reveal>
