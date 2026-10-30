@@ -4,7 +4,7 @@ export const links = {
   startProject: "/start-a-project",
   work: "#work",
   whatWeBuild: "/what-we-build",
-  howWeWork: "#how-we-work",
+  howWeWork: "/how-we-work",
   dbmWebsite: "https://dbm-website-ebon.vercel.app/",
   email: CONTACT_EMAIL_HREF,
   privacy: "/privacy",
