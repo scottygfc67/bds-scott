@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import {
   ArrowDown,
   ArrowRight,
@@ -254,18 +254,24 @@ function WhatWeBuildSection() {
   );
 }
 
-function HowWeWorkSection() {
+export function HowWeWorkSection() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 65%", "end 45%"],
+  });
+  const dotPosition = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   return (
     <section id="how-we-work" className={styles.processSection}>
       <div className={styles.sectionInner}>
         <div className={styles.processHeader}>
           <Reveal><SectionLabel number="04">How We Work</SectionLabel></Reveal>
           <Reveal delay={0.04}><h2 className={styles.sectionTitle}>Clear Process.<br />No Surprises<BlueDot /></h2></Reveal>
-          <Reveal delay={0.08}><p className={styles.sectionIntro}>You’ll know what we’re building, what happens next, and you’ll approve the direction before development moves forward.</p></Reveal>
-          <div className={styles.processMicrocopy}>Clear stages.<br />Direct communication.<br />Approved before<br />build.</div>
+          <Reveal delay={0.08}><p className={styles.sectionIntro}>From our first call to launch, we work with you to build something that fits the way your business actually operates. We aim to deliver in 14 days or less, depending on the project.</p></Reveal>
+          <div className={styles.processMicrocopy}>Discovery first.<br />Built together.<br />14-day target.</div>
         </div>
-        <div className={styles.timeline}>
-          <motion.div className={styles.timelineLine} initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 1, ease: easing }} />
+        <div className={styles.timeline} ref={timelineRef}>
+          <div className={styles.timelineLine} aria-hidden="true" /><motion.div className={styles.timelineProgress} style={{ scaleY: scrollYProgress }} aria-hidden="true" /><motion.span className={styles.timelineTravelDot} style={{ top: dotPosition }} aria-hidden="true" />
           {processSteps.map((step, index) => (
             <Reveal className={styles.timelineStep} key={step.number} delay={index * 0.07} amount={0.2}>
               <header><strong>{step.number}</strong><i /><span>{step.label}</span></header>
@@ -278,8 +284,8 @@ function HowWeWorkSection() {
         </div>
         <Reveal className={styles.reassurance} amount={0.1}>
           <div className={styles.reassuranceTitle}>You deal with the people<br />actually building it<BlueDot /></div>
-          <p>Direct communication from first conversation to launch. The same people planning the work are the ones designing and building it.</p>
-          <div className={styles.approvalCallout}><MessageSquareText aria-hidden="true" /><span>You’ll see mockups and agree the direction before we move into build.</span></div>
+          <p>We keep you involved from the discovery call through to launch, so the finished website feels right for your business and how you want to run it.</p>
+          <div className={styles.approvalCallout}><MessageSquareText aria-hidden="true" /><span>We aim for 14 days or less, with time for your feedback and final approval.</span></div>
           <div className={styles.processActions}><PrimaryLink href={links.startProject}>Start a Project</PrimaryLink><a href={links.email}>Get in touch</a></div>
         </Reveal>
       </div>

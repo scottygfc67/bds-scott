@@ -9,10 +9,10 @@ import styles from "./LightSiteHeader.module.css";
 const navItems = [
   { label: "Work", href: "/#work", key: "work" },
   { label: "What We Build", href: "/what-we-build", key: "what-we-build" },
-  { label: "How We Work", href: "/#how-we-work", key: "how-we-work" },
+  { label: "How We Work", href: "/how-we-work", key: "how-we-work" },
 ] as const;
 
-export function LightSiteHeader({ active, compact = false }: { active?: "what-we-build" | "start-a-project"; compact?: boolean }) {
+export function LightSiteHeader({ active, compact = false }: { active?: "what-we-build" | "how-we-work" | "start-a-project"; compact?: boolean }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
