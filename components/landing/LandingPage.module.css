@@ -402,3 +402,35 @@
   .timelineProgress { transform: scaleY(1) !important; }
   .timelineTravelDot { display: none; }
 }
+
+/* Desktop process: give every title the same reserved height so nodes
+   and the horizontal rule share one baseline, regardless of wrapping. */
+@media (min-width: 1200px) {
+  .timeline { gap: clamp(18px, 2vw, 30px); }
+  .timelineStep h3 {
+    font-size: clamp(27px, 2.15vw, 36px);
+    line-height: 1.03;
+    min-height: 112px;
+    overflow-wrap: normal;
+  }
+  .timelineLine { top: 167px; }
+  .timelineStep > p { min-height: 132px; font-size: 14px; }
+  .timelineStep ul { font-size: 13px; }
+}
+/* The five-column layout is too tight on small laptops/tablets.
+   Use the same vertical journey as mobile at these widths. */
+@media (min-width: 901px) and (max-width: 1199px) {
+  .timeline { grid-template-columns: minmax(0,1fr); max-width: 760px; padding-left: 58px; gap: 58px; }
+  .timelineLine { left: 10px; top: 10px; bottom: 12px; right: auto; width: 2px; height: auto; background: rgba(65,96,253,.18); transform: none !important; }
+  .timelineProgress { display: block; position: absolute; z-index: 1; left: 10px; top: 10px; bottom: 12px; width: 2px; background: var(--blue); transform-origin: top; pointer-events: none; }
+  .timelineTravelDot { display: block; position: absolute; z-index: 3; left: 11px; width: 16px; height: 16px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 6px rgba(65,96,253,.13); transform: translate(-50%,-50%); pointer-events: none; }
+  .timelineStep { z-index: 2; }
+  .timelineStep h3 { font-size: 40px; }
+  .timelineNode { position: absolute; left: -58px; top: -5px; margin: 0; }
+  .timelineStep > p { min-height: 0; font-size: 16px; max-width: 590px; }
+  .timelineStep ul { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) and (min-width: 901px) and (max-width: 1199px) {
+  .timelineProgress { transform: scaleY(1) !important; }
+  .timelineTravelDot { display: none; }
+}
