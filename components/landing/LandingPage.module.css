@@ -434,3 +434,19 @@
   .timelineProgress { transform: scaleY(1) !important; }
   .timelineTravelDot { display: none; }
 }
+
+/* Keep the desktop rail close to the titles without a blank spacer. */
+@media (min-width: 1200px) {
+  .timelineStep h3 {
+    min-height: 0;
+    height: 78px;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 12px;
+    margin-bottom: 0;
+    font-size: clamp(25px, 2vw, 34px);
+    line-height: 1.02;
+  }
+  .timelineLine { top: 118px; }
+  .timelineStep .timelineNode { margin-top: 0; margin-bottom: 19px; }
+}
