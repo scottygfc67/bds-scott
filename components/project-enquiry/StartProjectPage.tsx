@@ -27,18 +27,13 @@ import {
   timelineOptions,
 } from "@/lib/project-enquiry";
 import { CONTACT_EMAIL, CONTACT_EMAIL_HREF } from "@/lib/site";
+import { processSteps } from "@/lib/landing-content";
 import styles from "./StartProjectPage.module.css";
 
 type Step = 1 | 2 | 3;
 type FieldErrors = Partial<Record<keyof ProjectEnquiry, string>>;
 
 const typeIcons = [Monitor, PanelsTopLeft, Database, CreditCard, Zap, Shapes, CircleHelp];
-
-const nextSteps = [
-  { number: "01", title: "We review your details", body: "We’ll take a look at what you’ve sent and get a clear understanding of your goals." },
-  { number: "02", title: "We get in touch", body: "We’ll reply directly, usually within 1–2 working days, to discuss your project in more detail." },
-  { number: "03", title: "You get a clear plan", body: "We’ll recommend the right approach, with a clear next step and no obligation." },
-] as const;
 
 const faqs = [
   { question: "Do I need a fully defined brief?", answer: "No. An idea, problem or goal is enough to start. We can work through the structure, functionality and technical requirements with you before anything moves into development." },
@@ -238,7 +233,7 @@ function ProjectIntro() {
 function WhatHappensNext() {
   return <section className={styles.nextSection}><div className={styles.sectionInner}>
     <div className={styles.nextHeading}><SectionLabel>WHAT HAPPENS NEXT</SectionLabel><h2>A STRAIGHT<br />FORWARD<br />PROCESS<BlueDot /></h2></div>
-    <div className={styles.nextGrid}>{nextSteps.map((item) => <article key={item.number}><span>{item.number}</span><i aria-hidden="true" /><h3>{item.title}</h3><p>{item.body}</p></article>)}</div>
+    <div className={styles.nextGrid}>{processSteps.map((item) => <article key={item.number}><span>{item.number}</span><i aria-hidden="true" /><h3>{item.title}</h3><p>{item.body}</p></article>)}</div>
   </div></section>;
 }
 
